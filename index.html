@@ -435,7 +435,7 @@
 
     .hero-h1-wrapper {
       overflow: hidden;
-      margin-bottom: 24px;
+      margin-bottom: 12px;
     }
 
     .hero-title {
@@ -445,6 +445,30 @@
       line-height: 1.05;
       color: var(--dark);
       letter-spacing: -2px;
+    }
+
+    .typewriter-wrapper {
+      font-size: clamp(1.1rem, 2vw, 1.35rem);
+      color: var(--teal);
+      font-weight: 500;
+      margin-bottom: 24px;
+      min-height: 32px;
+      display: flex;
+      align-items: center;
+      gap: 2px;
+    }
+
+    .type-cursor {
+      width: 2px;
+      height: 1.2em;
+      background: var(--teal);
+      animation: blink 0.8s infinite;
+      display: inline-block;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 0; }
+      50% { opacity: 1; }
     }
 
     .hero-email {
@@ -1603,6 +1627,9 @@
           <div class="hero-h1-wrapper">
             <h1 class="hero-title" id="headline-l2">I'm Asghar</h1>
           </div>
+          <div class="typewriter-wrapper">
+            <span id="typewriter-text"></span><span class="type-cursor"></span>
+          </div>
           <a href="mailto:imasghar.dev@gmail.com" class="hero-email clickable">imasghar.dev@gmail.com</a>
           
           <div class="hero-exp-box">
@@ -2432,7 +2459,7 @@
         }, '-=0.5');
 
         // Stagger in stats badges and email link
-        heroTl.fromTo('.float-badge, .hero-email, .hero-exp-box, .hero-tagline, .rotating-badge-container', {
+        heroTl.fromTo('.float-badge, .hero-email, .hero-exp-box, .hero-tagline, .rotating-badge-container, .typewriter-wrapper', {
           y: 20,
           opacity: 0
         }, {
@@ -2691,6 +2718,35 @@
       ease: 'sine.inOut'
     });
 
+    // Typewriter rotating phrases
+    const phrases = [
+      "Senior Angular Developer",
+      "Healthcare Tech Architect",
+      "EHR & Telehealth Specialist",
+      "AI-Powered Medical Systems Builder"
+    ];
+    
+    const textTarget = document.getElementById('typewriter-text');
+    const typewriterTl = gsap.timeline({ repeat: -1 });
+
+    phrases.forEach((phrase) => {
+      typewriterTl.to(textTarget, {
+        duration: 1.4,
+        text: phrase,
+        ease: 'power2.inOut'
+      })
+      .to(textTarget, {
+        duration: 2 // hold text for 2 seconds
+      })
+      .to(textTarget, {
+        duration: 0.8,
+        text: "",
+        ease: 'power2.inOut'
+      })
+      .to(textTarget, {
+        duration: 0.4 // gap
+      });
+    });
   </script>
 </body>
 </html>
