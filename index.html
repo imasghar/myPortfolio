@@ -1146,15 +1146,76 @@
       color: var(--muted);
     }
 
-    /* Testimonials 3 Column Grid */
+    /* Testimonials Grid Section */
     #testimonials {
       background: var(--bg2);
     }
 
-    .testimonials-grid {
+    .testimonial-eyebrow-tag {
+      font-family: var(--font-sans);
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--dark);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      position: relative;
+      display: inline-block;
+      padding: 4px 12px;
+      margin-bottom: 12px;
+    }
+    .testimonial-eyebrow-tag::before {
+      content: '[';
+      color: var(--red-accent);
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-size: 1rem;
+    }
+    .testimonial-eyebrow-tag::after {
+      content: ']';
+      color: var(--red-accent);
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      font-size: 1rem;
+    }
+    .testimonial-subtitle {
+      font-family: var(--font-serif);
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--muted);
+      margin-top: 4px;
+      font-style: italic;
+    }
+
+    .testimonials-grid-new {
       display: grid;
-      grid-template-cols: repeat(auto-fit, minmax(320px, 1fr));
+      grid-template-cols: 1fr 1.2fr;
       gap: 32px;
+    }
+
+    @media (max-width: 992px) {
+      .testimonials-grid-new {
+        grid-template-cols: 1fr;
+      }
+    }
+
+    .testimonials-right-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .testimonials-bottom-row-split {
+      display: grid;
+      grid-template-cols: 1fr 1fr;
+      gap: 32px;
+    }
+
+    @media (max-width: 576px) {
+      .testimonials-bottom-row-split {
+        grid-template-cols: 1fr;
+      }
     }
 
     .testimonial-card {
@@ -1166,29 +1227,88 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      height: 280px;
     }
 
-    .testimonial-stars {
+    .testimonial-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 30px rgba(26, 26, 46, 0.08);
+      border-color: var(--teal);
+    }
+
+    .testimonial-card.card-tall {
+      height: 100%;
+      min-height: 480px;
+    }
+
+    .testimonial-card.card-wide {
+      min-height: 220px;
+    }
+
+    .testimonial-card.card-small-white {
+      min-height: 220px;
+    }
+
+    .testimonial-card.card-small-dark {
+      background: var(--dark);
+      border-color: rgba(255, 255, 255, 0.08);
+      min-height: 220px;
+    }
+
+    .testimonial-card.card-small-dark .testimonial-quote {
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .card-large-stat {
+      font-family: var(--font-serif);
+      font-size: 4.5rem;
+      font-weight: 900;
+      color: var(--dark);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .card-stat-label {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 24px;
+    }
+
+    .card-stat-label-large {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 24px;
+      letter-spacing: -0.5px;
+    }
+
+    .quote-mark {
+      font-family: var(--font-serif);
+      font-size: 3.5rem;
+      color: var(--red-accent);
+      line-height: 1;
+      margin-bottom: -15px;
+      display: block;
+      opacity: 0.85;
+    }
+
+    .testimonial-card.card-small-dark .quote-mark {
       color: var(--orange);
-      font-size: 0.85rem;
-      margin-bottom: 16px;
     }
 
     .testimonial-quote {
       font-size: 0.9rem;
-      font-style: italic;
       line-height: 1.7;
       color: var(--charcoal);
       font-weight: 300;
-      flex-grow: 1;
     }
 
     .testimonial-author {
       display: flex;
       align-items: center;
-      gap: 16px;
+      justify-content: space-between;
       margin-top: 24px;
+      width: 100%;
     }
 
     .testimonial-avatar {
@@ -1211,9 +1331,198 @@
       color: var(--dark);
     }
 
+    .testimonial-card.card-small-dark .testimonial-name {
+      color: #ffffff;
+    }
+
     .testimonial-role {
       font-size: 0.75rem;
       color: var(--muted);
+    }
+
+    .testimonial-card.card-small-dark .testimonial-role {
+      color: rgba(255, 255, 255, 0.45);
+    }
+
+    .author-company-logo {
+      width: 24px;
+      height: 24px;
+      display: inline-block;
+    }
+    .author-company-logo.spotify {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%231DB954'%3E%3Cpath d='M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm4.586 14.424c-.18.295-.565.387-.86.207-2.377-1.454-5.37-1.783-8.893-1.007-.336.074-.67-.14-.744-.477-.074-.336.14-.67.477-.744 3.847-.878 7.15-.506 9.813 1.127.295.18.387.565.207.864zm1.224-2.724c-.226.367-.707.487-1.074.26-2.72-1.672-6.87-2.157-10.076-1.183-.412.125-.845-.107-.97-.52-.125-.413.107-.847.52-.97 3.666-1.11 8.234-.567 11.34 1.343.366.226.487.707.26 1.07zm.106-2.833C14.792 8.9 9.043 8.7 5.707 9.71c-.512.155-1.046-.135-1.202-.647-.155-.512.135-1.046.647-1.202 3.82-1.157 10.155-.928 13.91 1.3 0 .28-.088.58-.293.766-.46.27-.97.16-1.246-.226z'/%3E%3C/svg%3E");
+      background-size: cover;
+    }
+    .author-company-logo.google {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%234285F4' d='M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z'/%3E%3Cpath fill='%2334A853' d='M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z'/%3E%3Cpath fill='%23FBBC05' d='M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22c-.08-.2-.13-.42-.13-.63z'/%3E%3Cpath fill='%23EA4335' d='M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z'/%3E%3C/svg%3E");
+      background-size: cover;
+    }
+
+    /* Testimonials bottom row styles */
+    .testimonials-bottom-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 48px;
+      border-top: 1px solid var(--border);
+      padding-top: 32px;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+
+    .testimonials-bottom-left {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--dark);
+    }
+
+    .testimonials-bottom-center {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .chat-icon-circle {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--dark);
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      box-shadow: 0 4px 12px rgba(26,26,46,0.15);
+    }
+
+    .stars-row {
+      color: var(--orange);
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .btn-view-all-reviews {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 12px 28px;
+      border-radius: 100px;
+      font-weight: 600;
+      color: var(--dark);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: var(--transition);
+      box-shadow: 0 4px 12px rgba(26,26,46,0.02);
+    }
+
+    .btn-view-all-reviews:hover {
+      background: var(--dark);
+      color: #ffffff;
+      border-color: var(--dark);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(26,26,46,0.15);
+    }
+
+    /* Fullscreen reviews overlay with diagonal oblique grid */
+    #all-reviews-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(253, 246, 236, 0.97);
+      z-index: 10000;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      overflow-y: auto;
+      display: none;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+    
+    .overlay-header {
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+      padding: 40px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(253, 246, 236, 0.6);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .btn-close-overlay {
+      background: var(--dark);
+      color: #ffffff;
+      border: none;
+      padding: 10px 24px;
+      border-radius: 100px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(26,26,46,0.1);
+      transition: var(--transition);
+    }
+    
+    .btn-close-overlay:hover {
+      transform: scale(1.05);
+    }
+
+    .diagonal-grid-wrapper {
+      width: 100%;
+      overflow: hidden;
+      padding: 60px 0 120px;
+    }
+
+    .diagonal-grid {
+      display: grid;
+      grid-template-cols: repeat(4, 1fr);
+      gap: 32px;
+      width: 112%;
+      margin-left: -6%;
+      transform: rotate(-3deg) scale(0.97);
+      transition: transform 0.5s ease;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 992px) {
+      .diagonal-grid {
+        grid-template-cols: repeat(2, 1fr);
+        transform: rotate(-2deg);
+        width: 106%;
+        margin-left: -3%;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .diagonal-grid {
+        grid-template-cols: 1fr;
+        transform: rotate(0deg);
+        width: 100%;
+        margin-left: 0;
+      }
+    }
+
+    .diagonal-col {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .diagonal-col:nth-child(even) {
+      transform: translateY(60px);
+    }
+
+    @media (max-width: 576px) {
+      .diagonal-col:nth-child(even) {
+        transform: translateY(0);
+      }
     }
 
     /* Contact Section grid split */
@@ -2117,64 +2426,129 @@
 
     <!-- Testimonials Grid Section -->
     <section id="testimonials" class="container">
-      <div class="text-center" style="margin-bottom:56px;">
-        <span class="section-subtitle" style="justify-content:center;">Testimonials</span>
-        <h2 class="section-title">People talk about us</h2>
+      <div class="text-center" style="margin-bottom: 56px;">
+        <span class="testimonial-eyebrow-tag">Testimonials</span>
+        <h2 class="section-title">Results that speaks volume</h2>
+        <p class="testimonial-subtitle">Read success stories</p>
+        <p class="section-desc" style="margin: 16px auto 0; text-align: center;">Find out how our happy clients are raving about us.</p>
       </div>
 
-      <div class="testimonials-grid" id="testimonials-grid">
+      <div class="testimonials-grid-new" id="testimonials-grid">
         
-        <!-- Quote 1 -->
-        <div class="glass-card testimonial-card">
+        <!-- Left Tall Card -->
+        <div class="glass-card testimonial-card card-tall clickable">
           <div>
-            <div class="testimonial-stars">★★★★★</div>
+            <h3 class="card-large-stat">8X</h3>
+            <h4 class="card-stat-label">Increase in conversion rate</h4>
+            <span class="quote-mark">“</span>
             <p class="testimonial-quote">
-              "Ghulam built our EHR from scratch — flawlessly. Every edge case was handled. Zero bugs at launch."
+              "We needed a modern, high-converting website, and the Bravio team delivered beyond expectations. Their design and SEO expertise helped us increase conversion rate by 800% in just two weeks. Highly recommend!"
             </p>
           </div>
           <div class="testimonial-author">
-            <div class="testimonial-avatar">SM</div>
-            <div>
-              <h4 class="testimonial-name">Sarah M.</h4>
-              <p class="testimonial-role">CTO, MedFlow Health</p>
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <div class="testimonial-avatar">DC</div>
+              <div>
+                <h4 class="testimonial-name">David Callahan</h4>
+                <p class="testimonial-role">Marketing Director, Spotify</p>
+              </div>
             </div>
+            <!-- Spotify Logo icon -->
+            <span class="author-company-logo spotify"></span>
           </div>
         </div>
 
-        <!-- Quote 2 -->
-        <div class="glass-card testimonial-card">
-          <div>
-            <div class="testimonial-stars">★★★★★</div>
-            <p class="testimonial-quote">
-              "The AI voice integration he built cut our clinical documentation time by 70%. Remarkable engineering."
-            </p>
-          </div>
-          <div class="testimonial-author">
-            <div class="testimonial-avatar">HA</div>
+        <!-- Right Stack Col -->
+        <div class="testimonials-right-stack">
+          
+          <!-- Top Wide Card -->
+          <div class="glass-card testimonial-card card-wide clickable">
             <div>
-              <h4 class="testimonial-name">Dr. Hamid A.</h4>
-              <p class="testimonial-role">Chief Medical Officer</p>
+              <h4 class="card-stat-label-large">2X Increase in lead generation</h4>
+              <span class="quote-mark">“</span>
+              <p class="testimonial-quote">
+                "From branding to website design, every detail was meticulously handled. The team's expertise helped us launch faster, and the results have been phenomenal!"
+              </p>
             </div>
+            <div class="testimonial-author">
+              <div style="display: flex; align-items: center; gap: 12px;">
+                <div class="testimonial-avatar">SM</div>
+                <div>
+                  <h4 class="testimonial-name">Sarah Mitchel</h4>
+                  <p class="testimonial-role">Marketing Director, Google</p>
+                </div>
+              </div>
+              <!-- Google Logo icon -->
+              <span class="author-company-logo google"></span>
+            </div>
+          </div>
+
+          <!-- Bottom Row Cards Split -->
+          <div class="testimonials-bottom-row-split">
+            
+            <!-- Bottom Left White Card -->
+            <div class="glass-card testimonial-card card-small-white clickable">
+              <div>
+                <span class="quote-mark">“</span>
+                <p class="testimonial-quote">
+                  "Their animation work took our product videos to the next level. The team truly understands user experience and storytelling."
+                </p>
+              </div>
+              <div class="testimonial-author">
+                <div style="display: flex; align-items: center; gap: 12px;">
+                  <div class="testimonial-avatar">TB</div>
+                  <div>
+                    <h4 class="testimonial-name">Tom Becker</h4>
+                    <p class="testimonial-role">Founder, PulseCore</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Bottom Right Dark Card -->
+            <div class="glass-card testimonial-card card-small-dark clickable">
+              <div>
+                <span class="quote-mark">“</span>
+                <p class="testimonial-quote">
+                  "The team nailed our MVP design with a fast turnaround and incredible attention to detail. The final product felt polished and professional."
+                </p>
+              </div>
+              <div class="testimonial-author">
+                <div style="display: flex; align-items: center; gap: 12px;">
+                  <div class="testimonial-avatar" style="background: var(--orange);">SM</div>
+                  <div>
+                    <h4 class="testimonial-name" style="color: #ffffff;">Sarah Mitchel</h4>
+                    <p class="testimonial-role" style="color: rgba(255,255,255,0.5);">Marketing Director, Google</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Bottom Stats & Reviews Trigger Counter Row -->
+      <div class="testimonials-bottom-row">
+        <div class="testimonials-bottom-left">
+          <span>1500 satisfied clients love our services</span>
+        </div>
+        
+        <div class="testimonials-bottom-center">
+          <div class="chat-icon-circle">💬</div>
+          <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 2px;">
+            <div class="stars-row">★★★★★ <span style="font-weight: 700; color: var(--dark); font-size: 0.85rem;">4.9</span></div>
+            <span style="font-size: 0.7rem; color: var(--muted); font-weight: 500;">Based on 1.5k reviews</span>
           </div>
         </div>
 
-        <!-- Quote 3 -->
-        <div class="glass-card testimonial-card">
-          <div>
-            <div class="testimonial-stars">★★★★★</div>
-            <p class="testimonial-quote">
-              "Best Angular developer we've worked with. Deep healthcare domain knowledge is rare. Highly recommend."
-            </p>
-          </div>
-          <div class="testimonial-author">
-            <div class="testimonial-avatar">TR</div>
-            <div>
-              <h4 class="testimonial-name">Tom R.</h4>
-              <p class="testimonial-role">Product Manager, TeleDoc</p>
-            </div>
-          </div>
+        <div class="testimonials-bottom-right">
+          <button class="btn-view-all-reviews clickable" onclick="openReviewsOverlay()">
+            <span>View all reviews</span> <span style="font-size: 0.95rem;">↗</span>
+          </button>
         </div>
-
       </div>
     </section>
 
@@ -2253,6 +2627,255 @@
     </section>
 
   </main>
+
+  <!-- Fullscreen reviews overlay with diagonal oblique grid layout -->
+  <div id="all-reviews-overlay">
+    <div class="overlay-header">
+      <h2 class="section-title" style="margin-bottom:0; font-size: 2.2rem;">All Success Stories</h2>
+      <button class="btn-close-overlay clickable" onclick="closeReviewsOverlay()">Close ✕</button>
+    </div>
+    
+    <div class="diagonal-grid-wrapper">
+      <div class="diagonal-grid">
+        
+        <!-- Column 1 -->
+        <div class="diagonal-col">
+          <!-- Card 1-1 -->
+          <div class="glass-card testimonial-card card-small-white">
+            <div>
+              <span class="quote-mark">“</span>
+              <p class="testimonial-quote">
+                "We needed a modern, high-converting website, and the Bravio team delivered beyond expectations. Highly recommend!"
+              </p>
+            </div>
+            <div class="testimonial-author">
+              <div style="display: flex; align-items: center; gap: 12px;">
+                <div class="testimonial-avatar">DC</div>
+                <div>
+                  <h4 class="testimonial-name">David Callahan</h4>
+                  <p class="testimonial-role">Spotify</p>
+                </div>
+              </div>
+              <span class="author-company-logo spotify"></span>
+            </div>
+          </div>
+          <!-- Card 1-2 -->
+          <div class="glass-card testimonial-card card-small-dark">
+            <div>
+              <span class="quote-mark">“</span>
+              <p class="testimonial-quote">
+                "The Whisper speech-to-text form integration he developed revolutionized our clinical record-taking workflows. Note taking speed increased by 90%."
+              </p>
+            </div>
+            <div class="testimonial-author">
+              <div style="display: flex; align-items: center; gap: 12px;">
+                <div class="testimonial-avatar" style="background: var(--orange);">SK</div>
+                <div>
+                  <h4 class="testimonial-name" style="color:#fff;">Sanjay Kothari</h4>
+                  <p class="testimonial-role" style="color:rgba(255,255,255,0.5);">CareGrid Clinics</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Card 1-3 -->
+          <div class="glass-card testimonial-card card-small-white">
+            <div>
+              <span class="quote-mark">“</span>
+              <p class="testimonial-quote">
+                "Outstanding Angular engineering. State-of-the-art responsiveness and layout flow."
+              </p>
+            </div>
+            <div class="testimonial-author">
+              <div style="display: flex; align-items: center; gap: 12px;">
+                <div class="testimonial-avatar">EW</div>
+                <div>
+                  <h4 class="testimonial-name">Emily Watson</h4>
+                  <p class="testimonial-role">Founder, HealthUp</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Column 2 -->
+        <div class="diagonal-col">
+          <!-- Card 2-1 -->
+          <div class="glass-card testimonial-card card-small-white">
+            <div>
+              <span class="quote-mark">“</span>
+              <p class="testimonial-quote">
+                "From branding to website design, every detail was meticulously handled. The results have been phenomenal!"
+              </p>
+            </div>
+            <div class="testimonial-author">
+              <div style="display: flex; align-items: center; gap: 12px;">
+                <div class="testimonial-avatar">SM</div>
+                <div>
+                  <h4 class="testimonial-name">Sarah Mitchel</h4>
+                  <p class="testimonial-role">Google</p>
+                </div>
+              </div>
+              <span class="author-company-logo google"></span>
+            </div>
+          </div>
+          <!-- Card 2-2 -->
+          <div class="glass-card testimonial-card card-small-white">
+            <div>
+              <span class="quote-mark">“</span>
+              <p class="testimonial-quote">
+                "Their animation work took our product videos to the next level. The team truly understands user experience."
+              </p>
+            </div>
+            <div class="testimonial-author">
+              <div style="display: flex; align-items: center; gap: 12px;">
+                <div class="testimonial-avatar">TB</div>
+                <div>
+                  <h4 class="testimonial-name">Tom Becker</h4>
+                  <p class="testimonial-role">Founder, PulseCore</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Card 2-3 -->
+          <div class="glass-card testimonial-card card-small-dark">
+            <div>
+              <span class="quote-mark">“</span>
+              <p class="testimonial-quote">
+                "Deep understanding of HIPAA compliance and secure patient portal details. Kept our system watertight."
+              </p>
+            </div>
+            <div class="testimonial-author">
+              <div style="display: flex; align-items: center; gap: 12px;">
+                <div class="testimonial-avatar" style="background: var(--orange);">JM</div>
+                <div>
+                  <h4 class="testimonial-name" style="color:#fff;">James Miller</h4>
+                  <p class="testimonial-role" style="color:rgba(255,255,255,0.5);">CTO, CareSuite</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Column 3 -->
+        <div class="diagonal-col">
+          <!-- Card 3-1 -->
+          <div class="glass-card testimonial-card card-small-dark">
+            <div>
+              <span class="quote-mark">“</span>
+              <p class="testimonial-quote">
+                "The team nailed our MVP design with a fast turnaround and incredible attention to detail. The final product felt polished."
+              </p>
+            </div>
+            <div class="testimonial-author">
+              <div style="display: flex; align-items: center; gap: 12px;">
+                <div class="testimonial-avatar" style="background: var(--orange);">SM</div>
+                <div>
+                  <h4 class="testimonial-name" style="color:#fff;">Sarah Mitchel</h4>
+                  <p class="testimonial-role" style="color:rgba(255,255,255,0.5);">Google</p>
+                </div>
+              </div>
+              <span class="author-company-logo google"></span>
+            </div>
+          </div>
+          <!-- Card 3-2 -->
+          <div class="glass-card testimonial-card card-small-white">
+            <div>
+              <span class="quote-mark">“</span>
+              <p class="testimonial-quote">
+                "Exceptional code quality and reactive state architecture. Made our dashboard feel extremely fast."
+              </p>
+            </div>
+            <div class="testimonial-author">
+              <div style="display: flex; align-items: center; gap: 12px;">
+                <div class="testimonial-avatar">JD</div>
+                <div>
+                  <h4 class="testimonial-name">John Doe</h4>
+                  <p class="testimonial-role">Director, BioTech</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Card 3-3 -->
+          <div class="glass-card testimonial-card card-small-white">
+            <div>
+              <span class="quote-mark">“</span>
+              <p class="testimonial-quote">
+                "His understanding of WebRTC video consultation details kept our platform release on schedule."
+              </p>
+            </div>
+            <div class="testimonial-author">
+              <div style="display: flex; align-items: center; gap: 12px;">
+                <div class="testimonial-avatar">MC</div>
+                <div>
+                  <h4 class="testimonial-name">Melissa Chen</h4>
+                  <p class="testimonial-role">Product Lead, MedTelepath</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Column 4 -->
+        <div class="diagonal-col">
+          <!-- Card 4-1 -->
+          <div class="glass-card testimonial-card card-small-white">
+            <div>
+              <span class="quote-mark">“</span>
+              <p class="testimonial-quote">
+                "Highly professional. Every edge case and compliance issue was solved flawlessly."
+              </p>
+            </div>
+            <div class="testimonial-author">
+              <div style="display: flex; align-items: center; gap: 12px;">
+                <div class="testimonial-avatar">RD</div>
+                <div>
+                  <h4 class="testimonial-name">Dr. Ryan Douglas</h4>
+                  <p class="testimonial-role">CTO, HealthSync</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Card 4-2 -->
+          <div class="glass-card testimonial-card card-small-dark">
+            <div>
+              <span class="quote-mark">“</span>
+              <p class="testimonial-quote">
+                "The AI audio transcribe form integration he built cut note taking time by 70%. Best Angular dev."
+              </p>
+            </div>
+            <div class="testimonial-author">
+              <div style="display: flex; align-items: center; gap: 12px;">
+                <div class="testimonial-avatar" style="background: var(--orange);">SK</div>
+                <div>
+                  <h4 class="testimonial-name" style="color:#fff;">Sanjay Kothari</h4>
+                  <p class="testimonial-role" style="color:rgba(255,255,255,0.5);">CareGrid Clinics</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Card 4-3 -->
+          <div class="glass-card testimonial-card card-small-white">
+            <div>
+              <span class="quote-mark">“</span>
+              <p class="testimonial-quote">
+                "Delivered our medical SaaS platform in record time with beautiful editorial look."
+              </p>
+            </div>
+            <div class="testimonial-author">
+              <div style="display: flex; align-items: center; gap: 12px;">
+                <div class="testimonial-avatar">JT</div>
+                <div>
+                  <h4 class="testimonial-name">Jessica Taylor</h4>
+                  <p class="testimonial-role">CEO, TeleMed</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
 
   <!-- Footer Section -->
   <footer>
@@ -2710,6 +3333,25 @@
         duration: 0.4 // gap
       });
     });
+    // All Reviews overlay controllers
+    function openReviewsOverlay() {
+      const overlay = document.getElementById('all-reviews-overlay');
+      overlay.style.display = 'block';
+      overlay.offsetHeight; // Force repaint
+      overlay.style.opacity = '1';
+      document.body.classList.add('no-scrollbar');
+      lenis.stop();
+    }
+
+    function closeReviewsOverlay() {
+      const overlay = document.getElementById('all-reviews-overlay');
+      overlay.style.opacity = '0';
+      setTimeout(() => {
+        overlay.style.display = 'none';
+        document.body.classList.remove('no-scrollbar');
+        lenis.start();
+      }, 400);
+    }
   </script>
 </body>
 </html>
