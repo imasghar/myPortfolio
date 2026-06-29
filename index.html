@@ -723,10 +723,10 @@
       }
     }
 
-    .services-left {
+    .services-left-cards {
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      gap: 20px;
     }
 
     .services-stats-container {
@@ -744,7 +744,7 @@
       font-family: var(--font-serif);
       font-size: 3.5rem;
       font-weight: 900;
-      color: var(--orange);
+      color: var(--dark);
       line-height: 1;
       margin-bottom: 6px;
     }
@@ -757,34 +757,28 @@
       letter-spacing: 0.5px;
     }
 
-    .services-right {
+    .services-right-text {
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      justify-content: center;
     }
 
     .service-card {
       background: var(--surface);
       border-radius: var(--radius);
-      padding: 24px 32px;
+      padding: 24px;
       display: flex;
       align-items: center;
-      justify-content: space-between;
       border: 1px solid var(--border);
-      border-left: 4px solid transparent;
-      box-shadow: 0 4px 20px rgba(26, 26, 46, 0.03);
+      box-shadow: 0 4px 20px rgba(26, 26, 46, 0.04);
       transition: var(--transition);
-      position: relative;
     }
 
     .service-card:hover {
       transform: translateY(-4px);
       box-shadow: 0 8px 30px rgba(26, 26, 46, 0.08);
+      border-color: var(--teal);
     }
-
-    .service-card.card-teal:hover { border-left-color: var(--teal); }
-    .service-card.card-orange:hover { border-left-color: var(--orange); }
-    .service-card.card-red:hover { border-left-color: var(--red-accent); }
 
     .service-card-left {
       display: flex;
@@ -793,63 +787,32 @@
     }
 
     .service-badge-icon {
-      width: 48px;
-      height: 48px;
+      width: 52px;
+      height: 52px;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.3rem;
-      box-shadow: inset 0 2px 8px rgba(0,0,0,0.04);
+      font-size: 1.4rem;
+      color: #ffffff;
+      box-shadow: inset 0 2px 8px rgba(0,0,0,0.06);
     }
 
-    .service-card.card-teal .service-badge-icon { background: rgba(42, 157, 143, 0.08); }
-    .service-card.card-orange .service-badge-icon { background: rgba(233, 168, 70, 0.08); }
-    .service-card.card-red .service-badge-icon { background: rgba(231, 111, 81, 0.08); }
+    .card-teal .service-badge-icon { background: var(--teal); }
+    .card-orange .service-badge-icon { background: var(--orange); }
+    .card-red .service-badge-icon { background: var(--red-accent); }
 
     .service-card-title {
-      font-size: 1.15rem;
+      font-size: 1.2rem;
       font-weight: 700;
       color: var(--dark);
-      margin-bottom: 4px;
+      margin-bottom: 2px;
     }
 
-    .service-card-sub {
-      font-size: 0.85rem;
+    .service-card-projects {
+      font-size: 0.9rem;
       color: var(--muted);
-    }
-
-    .service-card-counter {
-      font-size: 0.75rem;
-      font-weight: 600;
-      color: var(--teal);
-      background: rgba(42, 157, 143, 0.06);
-      padding: 4px 10px;
-      border-radius: 100px;
-      margin-top: 6px;
-      display: inline-block;
-    }
-
-    .service-card-arrow {
-      font-size: 1.2rem;
-      color: var(--muted);
-      transition: var(--transition);
-    }
-
-    .service-card:hover .service-card-arrow {
-      transform: translateX(4px);
-      color: var(--dark);
-    }
-
-    .card-corner-ornament {
-      width: 8px;
-      height: 8px;
-      background: var(--teal);
-      border-radius: 50%;
-      position: absolute;
-      top: 14px;
-      right: 14px;
-      opacity: 0.6;
+      font-weight: 500;
     }
 
     /* Experience Timeline Section Grid */
@@ -1732,18 +1695,53 @@
     <section id="services" class="container">
       <div class="services-grid">
         
-        <!-- Left: Editorial intro text -->
-        <div class="services-left">
-          <span class="section-subtitle">Core Expertise</span>
+        <!-- Left: Stacked service cards -->
+        <div class="services-left-cards">
+          
+          <!-- Card 1 -->
+          <div class="glass-card service-card card-teal clickable">
+            <div class="service-card-left">
+              <div class="service-badge-icon">🖥️</div>
+              <div>
+                <h3 class="service-card-title">Website Design</h3>
+                <p class="service-card-projects">76 Projects</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="glass-card service-card card-orange clickable">
+            <div class="service-card-left">
+              <div class="service-badge-icon">📱</div>
+              <div>
+                <h3 class="service-card-title">Mobile App Design</h3>
+                <p class="service-card-projects">63 Projects</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="glass-card service-card card-red clickable">
+            <div class="service-card-left">
+              <div class="service-badge-icon">🎨</div>
+              <div>
+                <h3 class="service-card-title">Brand Identity</h3>
+                <p class="service-card-projects">47 Projects</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right: Editorial intro text & stats -->
+        <div class="services-right-text">
           <h2 class="section-title">What do I help?</h2>
           
-          <!-- Small teal brush divider SVG -->
-          <svg viewBox="0 0 200 40" class="heading-brushstroke" width="120" height="24">
-            <path d="M10,20 C50,5 120,35 190,15" stroke="#2A9D8F" stroke-width="8" fill="none" stroke-linecap="round" opacity="0.4"/>
-          </svg>
-
-          <p class="section-desc">
-            I help companies build mission-critical healthcare systems. From Electronic Health Record (EHR) platforms to AI-powered transcription software — engineered for compliance, responsiveness, and speed.
+          <p class="section-desc" style="margin-bottom: 24px; max-w: 100%;">
+            I will help you with finding a solution and solve your problems, We use process design to create digital products. Besides that also help their business.
+          </p>
+          <p class="section-desc" style="margin-bottom: 40px; max-w: 100%;">
+            We use process design to create digital products. Besides that also help their business.
           </p>
 
           <div class="services-stats-container">
@@ -1756,53 +1754,6 @@
               <span class="services-stat-lbl">Happy Clients</span>
             </div>
           </div>
-        </div>
-
-        <!-- Right: Stacked service cards -->
-        <div class="services-right">
-          
-          <!-- Service Card 1 -->
-          <div class="glass-card service-card card-teal clickable">
-            <div class="card-corner-ornament"></div>
-            <div class="service-card-left">
-              <div class="service-badge-icon">🏥</div>
-              <div>
-                <h3 class="service-card-title">Healthcare EHR Systems</h3>
-                <p class="service-card-sub">Core patient charting engines and medical workflow forms.</p>
-                <span class="service-card-counter">12 Products Built</span>
-              </div>
-            </div>
-            <span class="service-card-arrow">➜</span>
-          </div>
-
-          <!-- Service Card 2 -->
-          <div class="glass-card service-card card-orange clickable">
-            <div class="card-corner-ornament"></div>
-            <div class="service-card-left">
-              <div class="service-badge-icon">📱</div>
-              <div>
-                <h3 class="service-card-title">Telehealth Platforms</h3>
-                <p class="service-card-sub">WebRTC video queues and encrypted message feeds.</p>
-                <span class="service-card-counter">6 Platforms</span>
-              </div>
-            </div>
-            <span class="service-card-arrow">➜</span>
-          </div>
-
-          <!-- Service Card 3 -->
-          <div class="glass-card service-card card-red clickable">
-            <div class="card-corner-ornament"></div>
-            <div class="service-card-left">
-              <div class="service-badge-icon">🤖</div>
-              <div>
-                <h3 class="service-card-title">AI Voice Integration</h3>
-                <p class="service-card-sub">Speech-to-text workflows translating transcription fields.</p>
-                <span class="service-card-counter">3 Integrations</span>
-              </div>
-            </div>
-            <span class="service-card-arrow">➜</span>
-          </div>
-
         </div>
 
       </div>
