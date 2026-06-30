@@ -3523,9 +3523,34 @@
       });
     }
 
+    let isHovered = false;
+    let lenisTimeout;
+
     if (viewport) {
+      // Stop global scroll when hovering over the carousel
+      viewport.addEventListener('mouseenter', () => {
+        isHovered = true;
+        lenis.stop();
+      });
+
+      // Resume global scroll when mouse leaves the carousel
+      viewport.addEventListener('mouseleave', () => {
+        isHovered = false;
+        lenis.start();
+      });
+
       viewport.addEventListener('scroll', () => {
         requestAnimationFrame(updateCoverFlow);
+        
+        // Ensure Lenis is stopped while scrolling
+        lenis.stop();
+        
+        clearTimeout(lenisTimeout);
+        lenisTimeout = setTimeout(() => {
+          if (!isHovered) {
+            lenis.start();
+          }
+        }, 400);
       });
 
       // Smart Wheel Handler: trackpad vs desktop mouse wheel
