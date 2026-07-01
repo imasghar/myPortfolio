@@ -16,31 +16,40 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://imasghar.github.io/myPortfolio/">
   
-  <!-- Google Fonts: Playfair Display + Inter -->
+  <!-- Google Fonts: Inter + JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;0,900;1,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   
   <!-- Design System CSS Styles -->
   <style>
     :root {
-      --bg: #FDF6EC;
-      --bg2: #F5EDD8;
-      --surface: #FFFFFF;
-      --dark: #1A1A2E;
-      --charcoal: #2D2D3A;
-      --teal: #2A9D8F;
-      --teal-light: #52B8AC;
-      --orange: #E9A846;
-      --orange-light: #F5C374;
-      --red-accent: #E76F51;
-      --muted: #8A8A9A;
-      --border: #E8DDD0;
-      --font-serif: 'Playfair Display', Georgia, serif;
+      --bg: #0A0A0B;
+      --bg2: #111113;
+      --surface: #18181B;
+      --dark: #FAFAFA;
+      --charcoal: #A1A1AA;
+      --teal: #2DD4BF;
+      --teal-light: #5EEAD4;
+      --orange: #2DD4BF;
+      --orange-light: #99F6E4;
+      --red-accent: #F43F5E;
+      --muted: #71717A;
+      --border: rgba(255,255,255,0.06);
+      --accent: #2DD4BF;
+      --accent-glow: rgba(45,212,191,0.15);
+      --font-serif: 'Inter', sans-serif;
       --font-sans: 'Inter', sans-serif;
-      --radius: 16px;
-      --radius-lg: 24px;
-      --transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+      --font-mono: 'JetBrains Mono', monospace;
+      --radius: 12px;
+      --radius-lg: 16px;
+      --transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      --space-xs: 8px;
+      --space-sm: 16px;
+      --space-md: 32px;
+      --space-lg: 64px;
+      --space-xl: 96px;
+      --space-2xl: 128px;
     }
 
     /* CSS Reset */
@@ -88,7 +97,7 @@
       top: 0;
       left: 0;
       height: 3px;
-      background: var(--orange);
+      background: var(--accent);
       width: 0%;
       z-index: 999;
       transform-origin: left;
@@ -110,7 +119,7 @@
     #cursor-ring {
       width: 36px;
       height: 36px;
-      border: 2px solid var(--orange);
+      border: 2px solid var(--accent);
       border-radius: 50%;
       position: fixed;
       pointer-events: none;
@@ -123,7 +132,7 @@
     /* Hover States for Custom Cursor */
     #cursor-dot.hovering {
       transform: translate(-50%, -50%) scale(4);
-      background-color: var(--orange);
+      background-color: var(--accent);
     }
 
     #cursor-ring.hovering {
@@ -145,7 +154,7 @@
     #preloader {
       position: fixed;
       inset: 0;
-      background: var(--dark);
+      background: var(--bg);
       z-index: 99999;
       display: flex;
       flex-direction: column;
@@ -154,10 +163,10 @@
     }
 
     .preload-logo {
-      font-family: var(--font-serif);
+      font-family: var(--font-sans);
       font-size: 120px;
       font-weight: 900;
-      color: var(--orange);
+      color: var(--accent);
       letter-spacing: -4px;
       margin-bottom: 24px;
     }
@@ -191,22 +200,22 @@
 
     /* Section Global Headers */
     .section-title {
-      font-family: var(--font-serif);
+      font-family: var(--font-sans);
       font-size: clamp(2.2rem, 4.5vw, 3.5rem);
-      font-weight: 900;
+      font-weight: 800;
       line-height: 1.1;
-      letter-spacing: -1.5px;
+      letter-spacing: -0.02em;
       color: var(--dark);
       margin-bottom: 16px;
     }
 
     .section-subtitle {
-      font-family: var(--font-sans);
-      font-size: 0.85rem;
-      color: var(--teal);
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--accent);
       text-transform: uppercase;
-      letter-spacing: 2px;
-      font-weight: 600;
+      letter-spacing: 0.1em;
+      font-weight: 500;
       margin-bottom: 12px;
       display: flex;
       align-items: center;
@@ -223,13 +232,13 @@
     .section-desc {
       font-size: 1.05rem;
       color: var(--charcoal);
-      max-w: 600px;
+      max-width: 600px;
       line-height: 1.6;
       margin-bottom: 48px;
     }
 
     .container {
-      max-w: 1200px;
+      max-width: 1200px;
       margin: 0 auto;
       padding: 100px 24px;
     }
@@ -256,7 +265,7 @@
       width: 100%;
       height: 72px;
       z-index: 100;
-      background: rgba(253, 246, 236, 0.85);
+      background: rgba(10, 10, 11, 0.75);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border);
@@ -266,12 +275,12 @@
     }
 
     header.scrolled {
-      box-shadow: 0 4px 30px rgba(26, 26, 46, 0.04);
-      background: rgba(253, 246, 236, 0.95);
+      box-shadow: 0 1px 0 var(--border);
+      background: rgba(10, 10, 11, 0.9);
     }
 
     .nav-container {
-      max-w: 1200px;
+      max-width: 1200px;
       margin: 0 auto;
       width: 100%;
       padding: 0 24px;
@@ -281,7 +290,7 @@
     }
 
     .logo {
-      font-family: var(--font-serif);
+      font-family: var(--font-sans);
       font-size: 1.4rem;
       font-weight: 700;
       color: var(--dark);
@@ -291,12 +300,13 @@
 
     /* Pill-shaped navigation shell */
     .nav-pill {
-      background: var(--dark);
+      background: var(--surface);
       border-radius: 100px;
       padding: 6px;
       display: flex;
       align-items: center;
       gap: 4px;
+      border: 1px solid var(--border);
     }
 
     .nav-link {
@@ -310,7 +320,7 @@
     }
 
     .nav-link:hover, .nav-link.active {
-      background: var(--surface);
+      background: rgba(255,255,255,0.06);
       color: var(--dark);
     }
 
@@ -334,20 +344,21 @@
       width: 38px;
       height: 38px;
       border-radius: 50%;
-      background: var(--orange);
-      border: none;
+      background: transparent;
+      border: 1px solid var(--accent);
       display: flex;
       align-items: center;
       justify-content: center;
-      color: var(--dark);
+      color: var(--accent);
       font-size: 1.1rem;
       text-decoration: none;
       transition: var(--transition);
-      box-shadow: 0 4px 12px rgba(233, 168, 70, 0.2);
+      box-shadow: none;
     }
 
     .btn-circle-arrow:hover {
-      background: var(--orange-light);
+      background: var(--accent);
+      color: var(--bg);
       transform: scale(1.05);
     }
 
@@ -406,11 +417,11 @@
     }
 
     .hero-grid {
-      max-w: 1200px;
+      max-width: 1200px;
       margin: 0 auto;
       width: 100%;
       display: grid;
-      grid-template-cols: 4.5fr 4fr 3.5fr;
+      grid-template-columns: 4.5fr 4fr 3.5fr;
       gap: 40px;
       align-items: center;
       position: relative;
@@ -424,11 +435,11 @@
     }
 
     .hero-eyebrow {
-      font-family: var(--font-sans);
-      font-size: 0.85rem;
-      color: var(--teal);
-      font-weight: 600;
-      letter-spacing: 2px;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--accent);
+      font-weight: 500;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
       margin-bottom: 16px;
     }
@@ -439,12 +450,12 @@
     }
 
     .hero-title {
-      font-family: var(--font-serif);
-      font-size: clamp(2.8rem, 6vw, 5rem);
-      font-weight: 900;
+      font-family: var(--font-sans);
+      font-size: clamp(3rem, 8vw, 6rem);
+      font-weight: 800;
       line-height: 1.05;
       color: var(--dark);
-      letter-spacing: -2px;
+      letter-spacing: -0.03em;
     }
 
     .typewriter-wrapper {
@@ -487,10 +498,10 @@
     }
 
     .hero-exp-num {
-      font-family: var(--font-serif);
+      font-family: var(--font-sans);
       font-size: 4.5rem;
-      font-weight: 900;
-      color: var(--orange);
+      font-weight: 800;
+      color: var(--accent);
       line-height: 1;
     }
 
@@ -536,14 +547,14 @@
     .profile-cutout {
       width: 280px;
       height: 280px;
-      border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%; /* Creative organic profile shape */
-      background: linear-gradient(135deg, var(--teal-light), var(--orange-light));
+      border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
+      background: linear-gradient(135deg, var(--teal), var(--teal-light));
       display: flex;
       align-items: center;
       justify-content: center;
       position: relative;
       z-index: 2;
-      box-shadow: 20px 40px 60px rgba(42, 157, 143, 0.25);
+      box-shadow: 20px 40px 60px var(--accent-glow);
       border: 6px solid var(--bg);
     }
 
@@ -566,7 +577,7 @@
       padding: 8px 16px;
       border-radius: 100px;
       z-index: 10;
-      box-shadow: 0 8px 24px rgba(42, 157, 143, 0.3);
+      box-shadow: 0 8px 24px var(--accent-glow);
       display: flex;
       align-items: center;
       gap: 6px;
@@ -582,7 +593,7 @@
       display: flex;
       align-items: center;
       gap: 12px;
-      box-shadow: 0 8px 32px rgba(42, 157, 143, 0.12);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
       border: 1px solid var(--border);
       z-index: 10;
     }
@@ -600,7 +611,7 @@
     .hero-stat-icon {
       font-size: 1.1rem;
       font-weight: 900;
-      color: var(--orange);
+      color: var(--accent);
     }
 
     .hero-stat-text {
@@ -633,7 +644,7 @@
       font-weight: 300;
       line-height: 1.7;
       color: var(--charcoal);
-      max-w: 240px;
+      max-width: 240px;
       margin-bottom: 48px;
     }
 
@@ -661,7 +672,7 @@
     .badge-center-star {
       position: absolute;
       font-size: 1.5rem;
-      color: var(--orange);
+      color: var(--accent);
     }
 
     /* Continuous Stats Ticker Marquee Strip */
@@ -686,9 +697,9 @@
     }
 
     .marquee-item {
-      font-family: var(--font-serif);
+      font-family: var(--font-sans);
       font-size: 1.25rem;
-      font-weight: 700;
+      font-weight: 600;
       color: var(--dark);
       margin-right: 48px;
       display: flex;
@@ -712,13 +723,13 @@
     /* Services / What I Do Grid Layout */
     .services-grid {
       display: grid;
-      grid-template-cols: 5fr 7fr;
+      grid-template-columns: 5fr 7fr;
       gap: 64px;
     }
 
     @media (max-width: 992px) {
       .services-grid {
-        grid-template-cols: 1fr;
+        grid-template-columns: 1fr;
         gap: 48px;
       }
     }
@@ -741,9 +752,9 @@
     }
 
     .services-stat-num {
-      font-family: var(--font-serif);
+      font-family: var(--font-sans);
       font-size: 3.5rem;
-      font-weight: 900;
+      font-weight: 700;
       color: var(--dark);
       line-height: 1;
       margin-bottom: 6px;
@@ -822,13 +833,13 @@
 
     .experience-grid {
       display: grid;
-      grid-template-cols: 5fr 7fr;
+      grid-template-columns: 5fr 7fr;
       gap: 64px;
     }
 
     @media (max-width: 992px) {
       .experience-grid {
-        grid-template-cols: 1fr;
+        grid-template-columns: 1fr;
         gap: 48px;
       }
     }
@@ -940,7 +951,7 @@
     /* Grid for Desktop / Horizontal scroll container for Mobile */
     .works-grid {
       display: grid;
-      grid-template-cols: repeat(auto-fit, minmax(340px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
       gap: 32px;
     }
 
@@ -986,9 +997,9 @@
       filter: drop-shadow(0 4px 10px rgba(0,0,0,0.15));
     }
 
-    .project-card.proj-teal { background: linear-gradient(135deg, var(--teal), var(--teal-light)); }
-    .project-card.proj-orange { background: linear-gradient(135deg, var(--orange), var(--orange-light)); }
-    .project-card.proj-dark { background: linear-gradient(135deg, var(--dark), var(--charcoal)); }
+    .project-card.proj-teal { background: linear-gradient(135deg, #18181B, #1a2e2b); }
+    .project-card.proj-orange { background: linear-gradient(135deg, #18181B, #1e2124); }
+    .project-card.proj-dark { background: linear-gradient(135deg, #111113, #18181B); }
 
     .project-card-bottom {
       background: var(--surface);
@@ -1007,8 +1018,8 @@
     .project-card-badge {
       font-size: 0.7rem;
       font-weight: 700;
-      color: var(--teal);
-      background: rgba(42, 157, 143, 0.08);
+      color: var(--accent);
+      background: rgba(45, 212, 191, 0.1);
       padding: 4px 10px;
       border-radius: 100px;
       text-transform: uppercase;
@@ -1018,17 +1029,17 @@
     }
 
     .project-card.proj-orange .project-card-badge {
-      color: var(--orange);
-      background: rgba(233, 168, 70, 0.08);
+      color: var(--accent);
+      background: rgba(45, 212, 191, 0.1);
     }
 
     .project-card.proj-dark .project-card-badge {
       color: var(--accent);
-      background: rgba(108, 99, 255, 0.08);
+      background: rgba(45, 212, 191, 0.1);
     }
 
     .project-card-title {
-      font-family: var(--font-serif);
+      font-family: var(--font-sans);
       font-size: 1.25rem;
       font-weight: 700;
       color: var(--dark);
@@ -1057,7 +1068,7 @@
 
     /* Skills / Tech Arsenal Cover Flow Section styling */
     .skills-dark-section {
-      background: #0f172a;
+      background: var(--bg2);
       position: relative;
       overflow: hidden;
       padding: 120px 0;
@@ -1071,7 +1082,7 @@
       transform: translate(-50%, -50%);
       width: 600px;
       height: 600px;
-      background: radial-gradient(circle, rgba(30,41,59,0.8) 0%, rgba(15,23,42,0) 70%);
+      background: radial-gradient(circle, rgba(24,24,27,0.8) 0%, rgba(17,17,19,0) 70%);
       pointer-events: none;
       z-index: 1;
     }
@@ -1104,10 +1115,10 @@
     }
 
     .polaroid-card {
-      background: #ffffff;
+      background: var(--surface);
       padding: 10px;
       border-radius: 2.5rem;
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
       width: 320px;
       height: 440px;
       flex-shrink: 0;
@@ -1115,10 +1126,11 @@
       transition: transform 0.1s ease, opacity 0.1s ease;
       position: relative;
       display: block;
+      border: 1px solid var(--border);
     }
 
     .inner-card {
-      background: #1e293b;
+      background: var(--bg);
       border-radius: 2rem;
       width: 100%;
       height: 100%;
@@ -1188,13 +1200,13 @@
       font-family: var(--font-sans);
       font-size: 1.25rem;
       font-weight: 700;
-      color: #f8fafc;
+      color: var(--dark);
       margin-bottom: 8px;
     }
 
     .skill-desc {
       font-size: 0.85rem;
-      color: #cbd5e1;
+      color: var(--charcoal);
       line-height: 1.5;
       margin-bottom: 16px;
       font-weight: 400;
@@ -1211,7 +1223,7 @@
       width: 10px;
       height: 10px;
       border-radius: 50%;
-      background: #475569;
+      background: var(--muted);
     }
 
     .rating-dot.filled {
@@ -1221,9 +1233,9 @@
 
     .card-btn {
       width: 100%;
-      background: #ffffff;
-      color: #0f172a;
-      border: none;
+      background: transparent;
+      color: var(--accent);
+      border: 1px solid var(--accent);
       padding: 12px 24px;
       border-radius: 100px;
       font-weight: 700;
@@ -1234,7 +1246,8 @@
 
     .card-btn:hover {
       transform: scale(0.98);
-      background: #f1f5f9;
+      background: var(--accent);
+      color: var(--bg);
     }
 
     /* Testimonials Grid Section */
@@ -1256,7 +1269,7 @@
     }
     .testimonial-eyebrow-tag::before {
       content: '[';
-      color: var(--red-accent);
+      color: var(--accent);
       position: absolute;
       left: 0;
       top: 0;
@@ -1264,7 +1277,7 @@
     }
     .testimonial-eyebrow-tag::after {
       content: ']';
-      color: var(--red-accent);
+      color: var(--accent);
       position: absolute;
       right: 0;
       bottom: 0;
@@ -1281,13 +1294,13 @@
 
     .testimonials-grid-new {
       display: grid;
-      grid-template-cols: 1fr 1.2fr;
+      grid-template-columns: 1fr 1.2fr;
       gap: 32px;
     }
 
     @media (max-width: 992px) {
       .testimonials-grid-new {
-        grid-template-cols: 1fr;
+        grid-template-columns: 1fr;
       }
     }
 
@@ -1299,13 +1312,13 @@
 
     .testimonials-bottom-row-split {
       display: grid;
-      grid-template-cols: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
       gap: 32px;
     }
 
     @media (max-width: 576px) {
       .testimonials-bottom-row-split {
-        grid-template-cols: 1fr;
+        grid-template-columns: 1fr;
       }
     }
 
@@ -1314,7 +1327,7 @@
       border-radius: var(--radius);
       padding: 32px;
       border: 1px solid var(--border);
-      box-shadow: 0 4px 24px rgba(26, 26, 46, 0.03);
+      box-shadow: 0 4px 24px rgba(0,0,0,0.15);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -1322,7 +1335,7 @@
 
     .testimonial-card:hover {
       transform: translateY(-4px);
-      box-shadow: 0 8px 30px rgba(26, 26, 46, 0.08);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.25);
       border-color: var(--teal);
     }
 
@@ -1340,8 +1353,8 @@
     }
 
     .testimonial-card.card-small-dark {
-      background: var(--dark);
-      border-color: rgba(255, 255, 255, 0.08);
+      background: var(--bg2);
+      border-color: var(--border);
       min-height: 220px;
     }
 
@@ -1374,9 +1387,9 @@
     }
 
     .quote-mark {
-      font-family: var(--font-serif);
+      font-family: var(--font-sans);
       font-size: 3.5rem;
-      color: var(--red-accent);
+      color: var(--accent);
       line-height: 1;
       margin-bottom: -15px;
       display: block;
@@ -1384,7 +1397,7 @@
     }
 
     .testimonial-card.card-small-dark .quote-mark {
-      color: var(--orange);
+      color: var(--accent);
     }
 
     .testimonial-quote {
@@ -1487,7 +1500,7 @@
     }
 
     .stars-row {
-      color: var(--orange);
+      color: var(--accent);
       font-size: 0.95rem;
       display: flex;
       align-items: center;
@@ -1510,18 +1523,18 @@
     }
 
     .btn-view-all-reviews:hover {
-      background: var(--dark);
-      color: #ffffff;
-      border-color: var(--dark);
+      background: var(--accent);
+      color: var(--bg);
+      border-color: var(--accent);
       transform: translateY(-2px);
-      box-shadow: 0 6px 18px rgba(26,26,46,0.15);
+      box-shadow: 0 6px 18px var(--accent-glow);
     }
 
     /* Fullscreen reviews overlay with diagonal oblique grid */
     #all-reviews-overlay {
       position: fixed;
       inset: 0;
-      background: rgba(253, 246, 236, 0.97);
+      background: rgba(10, 10, 11, 0.97);
       z-index: 10000;
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
@@ -1542,7 +1555,7 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(253, 246, 236, 0.6);
+      background: rgba(10, 10, 11, 0.6);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
     }
@@ -1572,7 +1585,7 @@
 
     .diagonal-grid {
       display: grid;
-      grid-template-cols: repeat(4, 1fr);
+      grid-template-columns: repeat(4, 1fr);
       gap: 32px;
       width: 112%;
       margin-left: -6%;
@@ -1584,7 +1597,7 @@
 
     @media (max-width: 992px) {
       .diagonal-grid {
-        grid-template-cols: repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr);
         transform: rotate(-2deg);
         width: 106%;
         margin-left: -3%;
@@ -1593,7 +1606,7 @@
 
     @media (max-width: 576px) {
       .diagonal-grid {
-        grid-template-cols: 1fr;
+        grid-template-columns: 1fr;
         transform: rotate(0deg);
         width: 100%;
         margin-left: 0;
@@ -1624,14 +1637,14 @@
 
     .contact-grid {
       display: grid;
-      grid-template-cols: 1.1fr 0.9fr;
+      grid-template-columns: 1.1fr 0.9fr;
       gap: 64px;
       align-items: center;
     }
 
     @media (max-width: 992px) {
       .contact-grid {
-        grid-template-cols: 1fr;
+        grid-template-columns: 1fr;
         gap: 48px;
       }
     }
@@ -1646,22 +1659,22 @@
     }
 
     .contact-title span {
-      color: var(--orange);
+      color: var(--accent);
       text-decoration: underline;
-      text-decoration-color: rgba(233, 168, 70, 0.4);
+      text-decoration-color: rgba(45, 212, 191, 0.4);
     }
 
     .contact-desc {
       font-size: 1.05rem;
       color: rgba(255, 255, 255, 0.75);
       line-height: 1.6;
-      max-w: 500px;
+      max-width: 500px;
       margin-bottom: 40px;
     }
 
     .contact-btn {
-      background: var(--orange);
-      color: var(--dark);
+      background: var(--accent);
+      color: var(--bg);
       text-decoration: none;
       padding: 16px 36px;
       border-radius: 100px;
@@ -1671,12 +1684,12 @@
       align-items: center;
       gap: 8px;
       transition: var(--transition);
-      box-shadow: 0 4px 18px rgba(233, 168, 70, 0.25);
+      box-shadow: 0 4px 18px var(--accent-glow);
     }
 
     .contact-btn:hover {
-      background: var(--orange-light);
-      box-shadow: 0 6px 24px rgba(233, 168, 70, 0.45);
+      background: var(--teal-light);
+      box-shadow: 0 6px 24px rgba(45, 212, 191, 0.35);
     }
 
     .contact-right-panel {
@@ -1754,7 +1767,7 @@
     }
 
     .footer-container {
-      max-w: 1200px;
+      max-width: 1200px;
       margin: 0 auto;
       padding: 60px 24px 32px;
       display: flex;
@@ -1859,7 +1872,7 @@
     @media (max-width: 767px) {
       /* Reorder/reduce spacing */
       .hero-grid {
-        grid-template-cols: 1fr;
+        grid-template-columns: 1fr;
         text-align: center;
         gap: 32px;
       }
@@ -1993,20 +2006,20 @@
     }
     .service-card:hover {
       border-color: var(--teal);
-      box-shadow: 0 12px 30px rgba(26,26,46,0.06);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.2);
     }
     
     /* Service card icon container gradient */
     .service-badge-icon {
-      background: linear-gradient(135deg, var(--teal), var(--teal-light)) !important;
-      color: #ffffff !important;
-      box-shadow: 0 4px 12px rgba(42, 157, 143, 0.2);
+      background: linear-gradient(135deg, var(--accent), var(--teal-light)) !important;
+      color: var(--bg) !important;
+      box-shadow: 0 4px 12px var(--accent-glow);
     }
     .card-orange .service-badge-icon {
-      background: linear-gradient(135deg, var(--orange), var(--orange-light)) !important;
+      background: linear-gradient(135deg, var(--accent), var(--teal-light)) !important;
     }
     .card-red .service-badge-icon {
-      background: linear-gradient(135deg, var(--red-accent), rgba(231, 111, 81, 0.6)) !important;
+      background: linear-gradient(135deg, var(--accent), var(--teal-light)) !important;
     }
 
     /* Timeline absolute rails & filling */
@@ -2151,17 +2164,17 @@
       position: relative;
     }
     @keyframes pulseGlow {
-      0%, 100% { box-shadow: 0 0 0 0 rgba(42, 157, 143, 0.4); }
-      50% { box-shadow: 0 0 0 10px rgba(42, 157, 143, 0); }
+      0%, 100% { box-shadow: 0 0 0 0 rgba(45, 212, 191, 0.4); }
+      50% { box-shadow: 0 0 0 10px rgba(45, 212, 191, 0); }
     }
 
     /* Shimmer sweep effect for hero eyebrow */
     .hero-eyebrow {
-      background: linear-gradient(120deg, rgba(42, 157, 143, 0.1) 30%, rgba(42, 157, 143, 0.3) 50%, rgba(42, 157, 143, 0.1) 70%);
+      background: linear-gradient(120deg, rgba(45, 212, 191, 0.08) 30%, rgba(45, 212, 191, 0.2) 50%, rgba(45, 212, 191, 0.08) 70%);
       background-size: 200% 100%;
       animation: shimmerSweep 4s linear infinite;
-      color: var(--teal);
-      border: 1px solid rgba(42, 157, 143, 0.2);
+      color: var(--accent);
+      border: 1px solid rgba(45, 212, 191, 0.15);
       padding: 6px 16px;
       border-radius: 100px;
       display: inline-block;
@@ -2171,6 +2184,22 @@
       0% { background-position: 100% 0; }
       100% { background-position: -100% 0; }
     }
+
+    /* Section transition gradients & borders */
+    #stats-marquee {
+      border-top-color: var(--border);
+      border-bottom-color: var(--border);
+    }
+    #services::before {
+      content: '';
+      position: absolute;
+      top: -1px;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: var(--border);
+    }
+    #services { position: relative; }
   </style>
 </head>
 <body class="no-scrollbar">
@@ -2272,7 +2301,7 @@
           <!-- Orange Brushstroke SVG 2 -->
           <svg viewBox="0 0 300 120" class="brush-2">
             <path d="M10,60 C60,10 140,110 200,50 C250,10 290,80 295,60"
-              stroke="#E9A846" stroke-width="45" fill="none"
+              stroke="#2DD4BF" stroke-width="45" fill="none"
               stroke-linecap="round" opacity="0.25"/>
           </svg>
 
@@ -2314,7 +2343,7 @@
               <defs>
                 <path id="circlePath" d="M 50, 50 m -38, 0 a 38,38 0 1,1 76,0 a 38,38 0 1,1 -76,0" />
               </defs>
-              <text font-size="8.5" font-weight="700" fill="#1A1A2E" letter-spacing="1">
+              <text font-size="8.5" font-weight="700" fill="#FAFAFA" letter-spacing="1">
                 <textPath href="#circlePath">
                   ANGULAR EXPERT · HEALTHCARE TECH · 
                 </textPath>
@@ -2414,10 +2443,10 @@
         <div class="services-right-text">
           <h2 class="section-title">What do I help?</h2>
           
-          <p class="section-desc reveal-paragraph" style="margin-bottom: 24px; max-w: 100%;">
+          <p class="section-desc reveal-paragraph" style="margin-bottom: 24px; max-width: 100%;">
             I will help you with finding a solution and solve your problems, We use process design to create digital products. Besides that also help their business.
           </p>
-          <p class="section-desc reveal-paragraph" style="margin-bottom: 40px; max-w: 100%;">
+          <p class="section-desc reveal-paragraph" style="margin-bottom: 40px; max-width: 100%;">
             We use process design to create digital products. Besides that also help their business.
           </p>
 
@@ -2447,7 +2476,7 @@
           
           <!-- Small orange brush divider SVG -->
           <svg viewBox="0 0 200 40" class="heading-brushstroke" width="120" height="24">
-            <path d="M10,20 C60,10 140,30 190,15" stroke="#E9A846" stroke-width="8" fill="none" stroke-linecap="round" opacity="0.4"/>
+            <path d="M10,20 C60,10 140,30 190,15" stroke="#2DD4BF" stroke-width="8" fill="none" stroke-linecap="round" opacity="0.15"/>
           </svg>
         </div>
 
@@ -2518,7 +2547,7 @@
         <div class="glass-card project-card proj-teal clickable">
           <div class="project-card-top">
             <div class="project-pattern-bg"></div>
-            <span class="project-card-icon">🏥</span>
+            <span class="project-card-icon"><i data-lucide="building-2" style="width:3.5rem;height:3.5rem;stroke:#2DD4BF;stroke-width:1.5"></i></span>
           </div>
           <div class="project-card-bottom">
             <span class="project-card-badge">Healthcare SaaS</span>
@@ -2535,7 +2564,7 @@
         <div class="glass-card project-card proj-orange clickable">
           <div class="project-card-top">
             <div class="project-pattern-bg"></div>
-            <span class="project-card-icon">🤖</span>
+            <span class="project-card-icon"><i data-lucide="bot" style="width:3.5rem;height:3.5rem;stroke:#2DD4BF;stroke-width:1.5"></i></span>
           </div>
           <div class="project-card-bottom">
             <span class="project-card-badge">AI Integration</span>
@@ -2552,7 +2581,7 @@
         <div class="glass-card project-card proj-dark clickable">
           <div class="project-card-top">
             <div class="project-pattern-bg"></div>
-            <span class="project-card-icon">📹</span>
+            <span class="project-card-icon"><i data-lucide="video" style="width:3.5rem;height:3.5rem;stroke:#2DD4BF;stroke-width:1.5"></i></span>
           </div>
           <div class="project-card-bottom">
             <span class="project-card-badge">Telehealth</span>
@@ -2569,7 +2598,7 @@
         <div class="glass-card project-card proj-orange clickable">
           <div class="project-card-top">
             <div class="project-pattern-bg"></div>
-            <span class="project-card-icon">💳</span>
+            <span class="project-card-icon"><i data-lucide="credit-card" style="width:3.5rem;height:3.5rem;stroke:#2DD4BF;stroke-width:1.5"></i></span>
           </div>
           <div class="project-card-bottom">
             <span class="project-card-badge">FinTech Healthcare</span>
@@ -2586,7 +2615,7 @@
         <div class="glass-card project-card proj-teal clickable">
           <div class="project-card-top">
             <div class="project-pattern-bg"></div>
-            <span class="project-card-icon">🩺</span>
+            <span class="project-card-icon"><i data-lucide="heart-pulse" style="width:3.5rem;height:3.5rem;stroke:#2DD4BF;stroke-width:1.5"></i></span>
           </div>
           <div class="project-card-bottom">
             <span class="project-card-badge">Patient Engagement</span>
@@ -2603,7 +2632,7 @@
         <div class="glass-card project-card proj-dark clickable">
           <div class="project-card-top">
             <div class="project-pattern-bg"></div>
-            <span class="project-card-icon">💬</span>
+            <span class="project-card-icon"><i data-lucide="message-circle" style="width:3.5rem;height:3.5rem;stroke:#2DD4BF;stroke-width:1.5"></i></span>
           </div>
           <div class="project-card-bottom">
             <span class="project-card-badge">Real-Time</span>
@@ -2626,9 +2655,9 @@
       <div class="ambient-glow"></div>
       
       <div class="container text-center" style="position: relative; z-index: 12; margin-bottom: 32px;">
-        <span class="testimonial-eyebrow-tag" style="color: var(--teal); border-color: var(--teal); opacity: 0.8;">Tech Arsenal</span>
+        <span class="testimonial-eyebrow-tag" style="color: var(--accent); border-color: var(--accent); opacity: 0.8;">Tech Arsenal</span>
         <h2 class="section-title" style="color: #ffffff; margin-bottom: 8px;">My Skills</h2>
-        <p class="section-desc" style="color: #cbd5e1; max-width: 600px; margin: 0 auto;">
+        <p class="section-desc" style="color: var(--charcoal); max-width: 600px; margin: 0 auto;">
           Hover, drag, or scroll through Ghulam Asghar's core technology stack and framework certifications.
         </p>
       </div>
@@ -2644,7 +2673,7 @@
               <div class="vignette"></div>
               
               <div class="parallax-container">
-                <div class="parallax-element skill-logo">🅰️</div>
+                <div class="parallax-element skill-logo"><span style="font-family:var(--font-mono);font-size:2.5rem;color:var(--accent);font-weight:700">Ng</span></div>
               </div>
               
               <div class="glass-overlay">
@@ -2669,7 +2698,7 @@
               <div class="vignette"></div>
               
               <div class="parallax-container">
-                <div class="parallax-element skill-logo">🟢</div>
+                <div class="parallax-element skill-logo"><span style="font-family:var(--font-mono);font-size:2.5rem;color:var(--accent);font-weight:700">Nd</span></div>
               </div>
               
               <div class="glass-overlay">
@@ -2694,7 +2723,7 @@
               <div class="vignette"></div>
               
               <div class="parallax-container">
-                <div class="parallax-element skill-logo">🍃</div>
+                <div class="parallax-element skill-logo"><span style="font-family:var(--font-mono);font-size:2.5rem;color:var(--accent);font-weight:700">Mg</span></div>
               </div>
               
               <div class="glass-overlay">
@@ -2719,7 +2748,7 @@
               <div class="vignette"></div>
               
               <div class="parallax-container">
-                <div class="parallax-element skill-logo">🩺</div>
+                <div class="parallax-element skill-logo"><span style="font-family:var(--font-mono);font-size:2.5rem;color:var(--accent);font-weight:700">Hc</span></div>
               </div>
               
               <div class="glass-overlay">
@@ -2744,7 +2773,7 @@
               <div class="vignette"></div>
               
               <div class="parallax-container">
-                <div class="parallax-element skill-logo">🤖</div>
+                <div class="parallax-element skill-logo"><span style="font-family:var(--font-mono);font-size:2.5rem;color:var(--accent);font-weight:700">AI</span></div>
               </div>
               
               <div class="glass-overlay">
@@ -2769,7 +2798,7 @@
               <div class="vignette"></div>
               
               <div class="parallax-container">
-                <div class="parallax-element skill-logo">🧊</div>
+                <div class="parallax-element skill-logo"><span style="font-family:var(--font-mono);font-size:2.5rem;color:var(--accent);font-weight:700">3D</span></div>
               </div>
               
               <div class="glass-overlay">
@@ -2794,7 +2823,7 @@
               <div class="vignette"></div>
               
               <div class="parallax-container">
-                <div class="parallax-element skill-logo">⚡</div>
+                <div class="parallax-element skill-logo"><span style="font-family:var(--font-mono);font-size:2.5rem;color:var(--accent);font-weight:700">Rx</span></div>
               </div>
               
               <div class="glass-overlay">
@@ -2819,7 +2848,7 @@
               <div class="vignette"></div>
               
               <div class="parallax-container">
-                <div class="parallax-element skill-logo">💬</div>
+                <div class="parallax-element skill-logo"><span style="font-family:var(--font-mono);font-size:2.5rem;color:var(--accent);font-weight:700">Tw</span></div>
               </div>
               
               <div class="glass-overlay">
@@ -2954,7 +2983,7 @@
         </div>
         
         <div class="testimonials-bottom-center">
-          <div class="chat-icon-circle">💬</div>
+          <div class="chat-icon-circle"><i data-lucide="message-circle" style="width:1.2rem;height:1.2rem;stroke:currentColor;stroke-width:1.5"></i></div>
           <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 2px;">
             <div class="stars-row">★★★★★ <span style="font-weight: 700; color: var(--dark); font-size: 0.85rem;">4.9</span></div>
             <span style="font-size: 0.7rem; color: var(--muted); font-weight: 500;">Based on 1.5k reviews</span>
@@ -2990,7 +3019,7 @@
           
           <!-- Item 1 -->
           <div class="contact-detail-item">
-            <div class="contact-detail-icon">📧</div>
+            <div class="contact-detail-icon"><i data-lucide="mail" style="width:1.1rem;height:1.1rem;stroke:currentColor;stroke-width:1.5"></i></div>
             <div>
               <div class="contact-detail-label">Email Address</div>
               <div class="contact-detail-value">imasghar.dev@gmail.com</div>
@@ -2999,7 +3028,7 @@
 
           <!-- Item 2 -->
           <div class="contact-detail-item">
-            <div class="contact-detail-icon">💼</div>
+            <div class="contact-detail-icon"><i data-lucide="linkedin" style="width:1.1rem;height:1.1rem;stroke:currentColor;stroke-width:1.5"></i></div>
             <div>
               <div class="contact-detail-label">LinkedIn</div>
               <div class="contact-detail-value">linkedin.com/in/imasghar</div>
@@ -3008,7 +3037,7 @@
 
           <!-- Item 3 -->
           <div class="contact-detail-item">
-            <div class="contact-detail-icon">🐙</div>
+            <div class="contact-detail-icon"><i data-lucide="github" style="width:1.1rem;height:1.1rem;stroke:currentColor;stroke-width:1.5"></i></div>
             <div>
               <div class="contact-detail-label">GitHub</div>
               <div class="contact-detail-value">github.com/imasghar</div>
@@ -3017,7 +3046,7 @@
 
           <!-- Item 4 -->
           <div class="contact-detail-item">
-            <div class="contact-detail-icon">📍</div>
+            <div class="contact-detail-icon"><i data-lucide="map-pin" style="width:1.1rem;height:1.1rem;stroke:currentColor;stroke-width:1.5"></i></div>
             <div>
               <div class="contact-detail-label">Location</div>
               <div class="contact-detail-value">Sargodha, PK → Dubai Ready</div>
@@ -3026,7 +3055,7 @@
 
           <!-- Item 5 -->
           <div class="contact-detail-item">
-            <div class="contact-detail-icon">⏰</div>
+            <div class="contact-detail-icon"><i data-lucide="clock" style="width:1.1rem;height:1.1rem;stroke:currentColor;stroke-width:1.5"></i></div>
             <div>
               <div class="contact-detail-label">Response Time</div>
               <div class="contact-detail-value">Within 24 Hours</div>
@@ -3331,6 +3360,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/TextPlugin.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
 
   <!-- ========================================== -->
   <!-- CUSTOM INLINE SCRIPT BLOCKS                -->
@@ -3452,26 +3482,30 @@
     ];
     
     const textTarget = document.getElementById('typewriter-text');
-    const typewriterTl = gsap.timeline({ repeat: -1 });
+    if (prefersReducedMotion) {
+      if (textTarget) textTarget.textContent = phrases[0];
+    } else {
+      const typewriterTl = gsap.timeline({ repeat: -1 });
 
-    phrases.forEach((phrase) => {
-      typewriterTl.to(textTarget, {
-        duration: 1.4,
-        text: phrase,
-        ease: 'power2.inOut'
-      })
-      .to(textTarget, {
-        duration: 2
-      })
-      .to(textTarget, {
-        duration: 0.8,
-        text: "",
-        ease: 'power2.inOut'
-      })
-      .to(textTarget, {
-        duration: 0.4
+      phrases.forEach((phrase) => {
+        typewriterTl.to(textTarget, {
+          duration: 1.4,
+          text: phrase,
+          ease: 'power2.inOut'
+        })
+        .to(textTarget, {
+          duration: 2
+        })
+        .to(textTarget, {
+          duration: 0.8,
+          text: "",
+          ease: 'power2.inOut'
+        })
+        .to(textTarget, {
+          duration: 0.4
+        });
       });
-    });
+    }
 
     // Custom SplitText-to-Spans helper
     function splitTextToSpans(element) {
@@ -3694,14 +3728,16 @@
 
       const material = new THREE.PointsMaterial({
         size: 0.08,
-        color: 0x2A9D8F,
+        color: 0x2DD4BF,
         transparent: true,
         opacity: 0.6,
         sizeAttenuation: true
       });
 
       const points = new THREE.Points(geometry, material);
-      scene.add(points);
+      const pointsGroup = new THREE.Group();
+      pointsGroup.add(points);
+      scene.add(pointsGroup);
 
       let animFrameId = null;
       let isVisible = true;
@@ -3712,8 +3748,8 @@
         points.rotation.y += 0.001;
         points.rotation.x += 0.0005;
 
-        points.rotation.x += (targetRotationX - points.rotation.x) * 0.08;
-        points.rotation.y += (targetRotationY - points.rotation.y) * 0.08;
+        pointsGroup.rotation.x += (targetRotationX - pointsGroup.rotation.x) * 0.08;
+        pointsGroup.rotation.y += (targetRotationY - pointsGroup.rotation.y) * 0.08;
 
         renderer.render(scene, camera);
         if (isVisible) {
@@ -3826,14 +3862,17 @@
       });
     }
 
-    // Sticky header glass transitions
-    window.addEventListener('scroll', () => {
-      const header = document.querySelector('header');
-      if (header) {
-        if (window.scrollY > 80) {
-          header.classList.add('scrolled');
-        } else {
-          header.classList.remove('scrolled');
+    // Sticky header glass transitions using ScrollTrigger
+    ScrollTrigger.create({
+      start: 80,
+      onUpdate: (self) => {
+        const header = document.querySelector('header');
+        if (header) {
+          if (self.scroll() > 80) {
+            header.classList.add('scrolled');
+          } else {
+            header.classList.remove('scrolled');
+          }
         }
       }
     });
@@ -4134,27 +4173,29 @@
       });
     });
 
-    // Bob yoyo animations
-    gsap.fromTo('.animate-bob', {
-      y: 0
-    }, {
-      y: -8,
-      duration: 2.2,
-      repeat: -1,
-      yoyo: true,
-      ease: 'sine.inOut'
-    });
+    if (!prefersReducedMotion) {
+      // Bob yoyo animations
+      gsap.fromTo('.animate-bob', {
+        y: 0
+      }, {
+        y: -8,
+        duration: 2.2,
+        repeat: -1,
+        yoyo: true,
+        ease: 'sine.inOut'
+      });
 
-    gsap.fromTo('.float-badge', {
-      y: 0
-    }, {
-      y: -6,
-      duration: 2,
-      repeat: -1,
-      yoyo: true,
-      stagger: 0.4,
-      ease: 'sine.inOut'
-    });
+      gsap.fromTo('.float-badge', {
+        y: 0
+      }, {
+        y: -6,
+        duration: 2,
+        repeat: -1,
+        yoyo: true,
+        stagger: 0.4,
+        ease: 'sine.inOut'
+      });
+    }
 
     // Staggered reveals for Tech Arsenal
     gsap.fromTo('.polaroid-card', {
@@ -4295,6 +4336,11 @@
 
       window.addEventListener('resize', updateCoverFlow);
       setTimeout(updateCoverFlow, 200);
+    }
+
+    // Initialize Lucide SVG icons
+    if (typeof lucide !== 'undefined') {
+      lucide.createIcons();
     }
   </script>
 </body>
